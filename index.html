@@ -28,14 +28,12 @@
   /* HEADER */
   header {
     display: flex; align-items: center; justify-content: space-between;
-    padding: 18px 32px;
+    padding: 12px 24px;
     border-bottom: 1.5px solid var(--border);
     background: var(--paper);
     position: sticky; top: 0; z-index: 100;
   }
-  .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; letter-spacing: -0.5px; }
-  .logo span { color: var(--accent); font-style: italic; }
-  nav { display: flex; gap: 4px; }
+  nav { display: flex; gap: 4px; align-items: center; }
   nav button {
     background: none; border: none; cursor: pointer;
     font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 500;
@@ -43,8 +41,9 @@
     transition: all 0.2s;
   }
   nav button.active, nav button:hover { background: var(--ink); color: var(--paper); }
-  .stats-bar { font-size: 0.8rem; color: var(--muted); display: flex; gap: 16px; align-items: center; }
-  .stats-bar b { color: var(--accent); font-size: 1rem; }
+  .nav-settings {
+    font-size: 1.2rem; padding: 6px 10px !important; border-radius: 50% !important;
+  }
 
   /* VIEWS */
   .view { display: none; padding: 32px; max-width: 800px; margin: 0 auto; }
@@ -301,21 +300,13 @@
 </head>
 <body>
 
-<div id="iframeBanner" style="background:#c4532a;color:white;padding:10px 20px;font-size:0.82rem;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">
-  <span>⚠️ <strong>Microphone blocked</strong> — Claude's preview can't access your mic. Download the file and open it directly in Chrome/Safari for full functionality.</span>
-  <button onclick="document.getElementById('iframeBanner').style.display='none'" style="background:rgba(255,255,255,0.2);border:none;color:white;border-radius:6px;padding:4px 10px;cursor:pointer;font-size:0.8rem;white-space:nowrap;">Dismiss</button>
-</div>
 <header>
-  <div class="logo">mon <span>français</span></div>
   <nav>
     <button class="active" onclick="showView('study')">Study</button>
     <button onclick="showView('pronun')">Pronunciation</button>
     <button onclick="showView('words')">My Words</button>
-    <button onclick="showView('settings')">⚙ Settings</button>
   </nav>
-  <div class="stats-bar">
-    Due today: <b id="dueCount">0</b> &nbsp;|&nbsp; Total: <b id="totalCount">0</b>
-  </div>
+  <button class="nav-settings" onclick="showView('settings')" style="background:none;border:none;cursor:pointer;font-size:1.2rem;padding:6px 10px;border-radius:50%;color:var(--muted);transition:all 0.2s;" title="Settings">⚙️</button>
 </header>
 
 <!-- STUDY VIEW -->
@@ -331,7 +322,10 @@
       <button onclick="initStudy(true)">Review all again</button>
     </div>
     <div id="study-main" style="display:none">
-      <div class="card-counter" id="cardCounter"></div>
+      <div style="text-align:center;margin-bottom:10px;">
+        <div style="font-size:0.78rem;color:var(--muted);margin-bottom:4px;">Due today: <b id="dueCount" style="color:var(--accent);">0</b> &nbsp;|&nbsp; Total: <b id="totalCount" style="color:var(--accent);">0</b></div>
+        <div class="card-counter" id="cardCounter"></div>
+      </div>
       <div class="progress-bar-wrap"><div class="progress-bar-fill" id="progressBar" style="width:0%"></div></div>
       <div class="card-wrap" onclick="flipCard()">
         <div class="card-inner" id="cardInner">
@@ -568,8 +562,8 @@ function showView(name) {
   document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
   document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
   document.getElementById('view-'+name).classList.add('active');
-  const idx = {study:0,pronun:1,words:2,settings:3}[name] ?? 0;
-  document.querySelectorAll('nav button')[idx].classList.add('active');
+  const idx = {study:0, pronun:1, words:2}[name];
+  if (idx !== undefined) document.querySelectorAll('nav button')[idx].classList.add('active');
   if (name === 'study') initStudy();
   if (name === 'pronun') initPronun();
   if (name === 'words') renderWordList();
