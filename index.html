@@ -957,18 +957,7 @@
       </div>
     </div>
 
-    <div
-      style="background:var(--card-bg);border:1.5px solid var(--border);border-radius:16px;padding:28px;max-width:560px;box-shadow:var(--shadow);margin-top:16px;">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
-        <span style="font-size:1.3rem;">🗑️</span>
-        <span style="font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;">Reset Data</span>
-      </div>
-      <p style="font-size:0.85rem;color:var(--muted);margin-bottom:16px;">Delete all your saved words and study
-        progress. This cannot be undone.</p>
-      <button onclick="resetAllData()"
-        style="background:#fdecea;color:#c0392b;border:1.5px solid #f5b7b1;border-radius:10px;padding:10px 20px;font-size:0.85rem;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;">Delete
-        all words & progress</button>
-    </div>
+
   </div>
 
   <script>
@@ -1148,12 +1137,7 @@
       el.innerHTML = msg; el.style.color = color;
     }
 
-    function resetAllData() {
-      if (!confirm('Delete all words and progress? This cannot be undone.')) return;
-      sbFetch(`words?user_id=eq.${USER_ID}`, { method: 'DELETE' })
-        .then(() => { words = []; updateStats(); renderWordList(); alert('All data cleared.'); })
-        .catch(e => alert('Error: ' + e.message));
-    }
+
 
     // ─── API HELPER ─────────────────────────────────────────
     async function callAI(prompt) {
