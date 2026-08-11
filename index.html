@@ -6,19 +6,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Allez!</title>
   <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap"
     rel="stylesheet">
   <style>
     :root {
-      --ink: #1a1412;
-      --paper: #f7f3ee;
-      --cream: #ede8e0;
-      --accent: #c4532a;
-      --accent2: #3a6b8a;
-      --muted: #8a8078;
+      --ink: #000000;
+      --paper: #ffffff;
+      --cream: #F2F2F0;
+      --accent: #A3C67C;
+      --accent2: #000000;
+      --muted: #888888;
       --card-bg: #ffffff;
-      --border: rgba(26, 20, 18, 0.12);
-      --shadow: 0 4px 24px rgba(26, 20, 18, 0.10);
+      --border: #E5E5E5;
+      --shadow: none;
     }
 
     * {
@@ -28,7 +28,7 @@
     }
 
     body {
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', system-ui, sans-serif;
       background: var(--paper);
       color: var(--ink);
       min-height: 100vh;
@@ -55,21 +55,21 @@
 
     nav button {
       background: none;
-      border: none;
+      border: 1px solid transparent;
       cursor: pointer;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.85rem;
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 0.82rem;
       font-weight: 500;
       color: var(--muted);
-      padding: 8px 16px;
-      border-radius: 20px;
+      padding: 7px 18px;
+      border-radius: 9999px;
       transition: all 0.2s;
     }
 
     nav button.active,
     nav button:hover {
       background: var(--ink);
-      color: var(--paper);
+      color: #ffffff;
     }
 
     .nav-settings {
@@ -129,12 +129,12 @@
 
     .card-front {
       background: var(--card-bg);
-      border: 1.5px solid var(--border);
+      border: 1px solid var(--border);
     }
 
     .card-back {
       background: var(--ink);
-      color: var(--paper);
+      color: #ffffff;
       transform: rotateY(180deg);
     }
 
@@ -151,9 +151,9 @@
     }
 
     .card-word {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Inter', system-ui, sans-serif;
       font-size: clamp(2rem, 6vw, 3.2rem);
-      font-weight: 700;
+      font-weight: 800;
       text-align: center;
       line-height: 1.1;
     }
@@ -179,9 +179,9 @@
     }
 
     .card-meaning {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Inter', system-ui, sans-serif;
       font-size: clamp(1.8rem, 5vw, 2.8rem);
-      font-weight: 700;
+      font-weight: 800;
       text-align: center;
       margin-bottom: 4px;
       line-height: 1.2;
@@ -199,10 +199,11 @@
     .card-mnemonic {
       margin-top: 18px;
       padding: 12px 18px;
-      background: rgba(196, 83, 42, 0.18);
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.25);
       border-radius: 10px;
       font-size: 0.85rem;
-      color: #f5b49a;
+      color: rgba(255,255,255,0.85);
       text-align: center;
       line-height: 1.5;
       max-width: 100%;
@@ -218,22 +219,23 @@
 
     .audio-btn {
       margin-top: 16px;
-      background: rgba(247, 243, 238, 0.12);
-      border: 1px solid rgba(247, 243, 238, 0.25);
-      color: var(--paper);
-      border-radius: 20px;
-      padding: 6px 16px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: #ffffff;
+      border-radius: 9999px;
+      padding: 6px 18px;
       font-size: 0.82rem;
       cursor: pointer;
       display: flex;
       align-items: center;
       gap: 6px;
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 500;
       transition: background 0.2s;
     }
 
     .audio-btn:hover {
-      background: rgba(247, 243, 238, 0.22);
+      background: rgba(255,255,255,0.22);
     }
 
     /* RATING BUTTONS */
@@ -250,51 +252,53 @@
       flex: 1;
       min-width: 90px;
       padding: 12px 8px;
-      border-radius: 12px;
-      border: 1.5px solid transparent;
-      font-family: 'DM Sans', sans-serif;
+      border-radius: 9999px;
+      border: 1px solid var(--border);
+      font-family: 'Inter', system-ui, sans-serif;
       font-size: 0.82rem;
-      font-weight: 500;
+      font-weight: 600;
       cursor: pointer;
       transition: all 0.15s;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 3px;
+      background: var(--cream);
+      color: var(--ink);
     }
 
     .rating-btn .interval {
       font-size: 0.68rem;
-      opacity: 0.7;
+      opacity: 0.55;
+      font-weight: 400;
     }
 
     .btn-again {
-      background: #fdecea;
-      color: #c0392b;
-      border-color: #f5b7b1;
+      background: var(--ink);
+      color: #ffffff;
+      border-color: var(--ink);
     }
 
     .btn-hard {
-      background: #fef9ec;
-      color: #b7770d;
-      border-color: #fde68a;
+      background: var(--cream);
+      color: var(--ink);
     }
 
     .btn-good {
-      background: #edf7ed;
-      color: #276221;
-      border-color: #a9dfad;
+      background: var(--cream);
+      color: var(--ink);
     }
 
     .btn-easy {
-      background: #eaf2fb;
-      color: #1a5276;
-      border-color: #85c1e9;
+      background: var(--cream);
+      color: var(--ink);
     }
 
     .rating-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      background: var(--ink);
+      color: #ffffff;
+      border-color: var(--ink);
+      transform: none;
     }
 
     .progress-bar-wrap {
@@ -307,7 +311,7 @@
 
     .progress-bar-fill {
       height: 100%;
-      background: var(--accent);
+      background: var(--ink);
       border-radius: 2px;
       transition: width 0.4s ease;
     }
@@ -392,13 +396,13 @@
     }
 
     .btn-play {
-      background: var(--accent2);
-      color: white;
+      background: var(--ink);
+      color: #ffffff;
     }
 
     .btn-rec {
-      background: var(--accent);
-      color: white;
+      background: #555555;
+      color: #ffffff;
     }
 
     .btn-rec.recording {
@@ -406,15 +410,8 @@
     }
 
     @keyframes pulse {
-
-      0%,
-      100% {
-        box-shadow: 0 0 0 0 rgba(196, 83, 42, 0.4)
-      }
-
-      50% {
-        box-shadow: 0 0 0 12px rgba(196, 83, 42, 0)
-      }
+      0%, 100% { box-shadow: 0 0 0 0 rgba(0,0,0,0.3) }
+      50%       { box-shadow: 0 0 0 12px rgba(0,0,0,0) }
     }
 
     .panel-status {
@@ -453,14 +450,14 @@
 
     .get-ai-btn {
       background: var(--ink);
-      color: var(--paper);
+      color: #ffffff;
       border: none;
-      border-radius: 10px;
+      border-radius: 9999px;
       padding: 10px 22px;
       font-size: 0.85rem;
-      font-weight: 500;
+      font-weight: 600;
       cursor: pointer;
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', system-ui, sans-serif;
       display: flex;
       align-items: center;
       gap: 8px;
@@ -519,10 +516,10 @@
 
     .wl-input {
       flex: 1;
-      border: 1.5px solid var(--border);
-      border-radius: 10px;
-      padding: 10px 16px;
-      font-family: 'DM Sans', sans-serif;
+      border: 1px solid var(--border);
+      border-radius: 9999px;
+      padding: 10px 20px;
+      font-family: 'Inter', system-ui, sans-serif;
       font-size: 0.9rem;
       background: var(--card-bg);
       color: var(--ink);
@@ -531,19 +528,19 @@
     }
 
     .wl-input:focus {
-      border-color: var(--accent);
+      border-color: var(--ink);
     }
 
     .wl-add-btn {
-      background: var(--accent);
-      color: white;
+      background: var(--ink);
+      color: #ffffff;
       border: none;
-      border-radius: 10px;
-      padding: 10px 20px;
+      border-radius: 9999px;
+      padding: 10px 24px;
       font-size: 0.9rem;
-      font-weight: 500;
+      font-weight: 600;
       cursor: pointer;
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', system-ui, sans-serif;
       white-space: nowrap;
       transition: opacity 0.2s;
     }
@@ -579,8 +576,8 @@
     }
 
     .word-card-fr {
-      font-family: 'Playfair Display', serif;
-      font-size: 0.75rem;
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 0.9rem;
       font-weight: 700;
       min-width: 120px;
     }
@@ -665,21 +662,21 @@
 
     .done-state button {
       background: var(--ink);
-      color: var(--paper);
+      color: #ffffff;
       border: none;
-      border-radius: 12px;
+      border-radius: 9999px;
       padding: 12px 28px;
       font-size: 0.95rem;
-      font-weight: 500;
+      font-weight: 600;
       cursor: pointer;
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', system-ui, sans-serif;
     }
 
     /* SECTION TITLE */
     .section-title {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Inter', system-ui, sans-serif;
       font-size: 1.6rem;
-      font-weight: 700;
+      font-weight: 800;
       margin-bottom: 6px;
     }
 
@@ -876,7 +873,7 @@
     <div id="wl-preview"
       style="display:none;background:var(--card-bg);border:1.5px solid var(--accent2);border-radius:12px;padding:16px 20px;margin-bottom:20px;display:none;align-items:center;gap:16px;flex-wrap:wrap;">
       <div style="flex:1;">
-        <span style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;" id="preview-fr"></span>
+        <span style="font-family:'Inter',system-ui,sans-serif;font-size:1.1rem;font-weight:800;" id="preview-fr"></span>
         <span style="color:var(--muted);margin:0 8px;">→</span>
         <span style="font-size:1rem;" id="preview-en"></span>
       </div>
@@ -906,7 +903,7 @@
       style="background:var(--card-bg);border:1.5px solid var(--border);border-radius:16px;padding:28px;max-width:560px;box-shadow:var(--shadow);">
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
         <span style="font-size:1.3rem;">🔑</span>
-        <span style="font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;">AI Provider & API
+        <span style="font-family:'Inter',system-ui,sans-serif;font-size:1.15rem;font-weight:700;">AI Provider & API
           Key</span>
       </div>
 
@@ -923,20 +920,17 @@
       </p>
 
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:18px;">
-        <button id="providerBtnAnthropic" onclick="selectProvider('anthropic')"
-          style="padding:10px;border-radius:10px;border:2px solid var(--border);background:var(--cream);font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:500;cursor:pointer;transition:all 0.15s;">
+        <button id="providerBtnAnthropic" onclick="selectProvider('anthropic')" style="padding:10px;border-radius:10px;border:2px solid var(--border);background:var(--cream);font-family:'Inter',sans-serif;font-size:0.85rem;font-weight:500;cursor:pointer;transition:all 0.15s;">
           🤖 Anthropic (Claude)
         </button>
-        <button id="providerBtnGemini" onclick="selectProvider('gemini')"
-          style="padding:10px;border-radius:10px;border:2px solid var(--border);background:var(--cream);font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:500;cursor:pointer;transition:all 0.15s;">
+        <button id="providerBtnGemini" onclick="selectProvider('gemini')" style="padding:10px;border-radius:10px;border:2px solid var(--border);background:var(--cream);font-family:'Inter',sans-serif;font-size:0.85rem;font-weight:500;cursor:pointer;transition:all 0.15s;">
           ✨ Google Gemini
         </button>
-        <button id="providerBtnGroq" onclick="selectProvider('groq')"
-          style="padding:10px;border-radius:10px;border:2px solid var(--border);background:var(--cream);font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:500;cursor:pointer;transition:all 0.15s;">
+        <button id="providerBtnGroq" onclick="selectProvider('groq')" style="padding:10px;border-radius:10px;border:2px solid var(--border);background:var(--cream);font-family:'Inter',sans-serif;font-size:0.85rem;font-weight:500;cursor:pointer;transition:all 0.15s;">
           ⚡ Groq (Free)
         </button>
         <button id="providerBtnOpenrouter" onclick="selectProvider('openrouter')"
-          style="padding:10px;border-radius:10px;border:2px solid var(--border);background:var(--cream);font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:500;cursor:pointer;transition:all 0.15s;">
+          style="padding:10px;border-radius:10px;border:2px solid var(--border);background:var(--cream);font-family:'Inter',sans-serif;font-size:0.85rem;font-weight:500;cursor:pointer;transition:all 0.15s;">
           🌐 OpenRouter (Free)
         </button>
       </div>
